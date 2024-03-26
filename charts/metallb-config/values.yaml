@@ -1,0 +1,88 @@
+# Default values for metallb.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+
+# Default namespace, used of no namespace is set
+defaultNamespace: metallb-system
+
+ipAddressPools:
+  - name: default
+    spec:
+      addresses:
+      - 192.168.10.0/24
+
+l2Advertisements:
+  - name: default
+    spec:
+      ipAddressPools:
+      - default
+      nodeSelectors:
+      - matchLabels:
+          kubernetes.io/hostname: NodeA
+      - matchLabels:
+          kubernetes.io/hostname: NodeB
+
+bgpAdvertisements:
+  - name: local
+    namespace: metallb-system
+    spec:
+      ipAddressPools:
+      - default
+      aggregationLength: 32
+      localPref: 100
+      communities:
+      - 65535:65282
+
+bgpPeers:
+  - name: default
+    spec:
+      myASN: 64512
+      peerASN: 64512
+      peerAddress: 172.30.0.3
+      peerPort: 180
+      nodeSelectors:
+      - matchLabels:
+          rack: frontend
+        matchExpressions:
+        - key: network-speed
+          operator: NotIn
+          values: [slow]
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values: [hostA, hostB]
+
+bfdProfiles:
+  - name: default
+    spec:
+      receiveInterval: 380
+      transmitInterval: 270
+
+communities:
+  - name: default
+    spec:
+      communities:
+      - name: vpn-only
+        value: 1234:1
+      - name: NO_ADVERTISE
+        value: 65535:65282
+
+frrConfigurations:
+  - name: default
+    labels:
+      foo: bar
+    annotations:
+      bar: foo
+    spec:
+      bgp:
+        routers:
+        - asn: 64512
+          neighbors:
+          - address: 172.30.0.3
+            asn: 64512
+            toReceive:
+              allowed:
+                mode: all

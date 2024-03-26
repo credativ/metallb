@@ -1,0 +1,15 @@
+{{- range $peer := .Values.bgpPeers }}
+---
+apiVersion: metallb.io/v1beta1
+kind: BGPPeer
+metadata:
+  name: {{ $peer.name }}
+  namespace: {{ $peer.namespace | default $.Values.defaultNamespace }}
+  labels:
+    {{- include "metallb-config.labels" $ | nindent 4 }}
+    {{- if $peer.labels }}
+    {{- $peer.labels | toYaml | nindent 4 }}
+    {{- end }}
+spec:
+  {{- $peer.spec | toYaml | nindent 2 -}}
+{{- end }}

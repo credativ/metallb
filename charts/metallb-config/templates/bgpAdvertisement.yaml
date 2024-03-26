@@ -1,0 +1,15 @@
+{{- range $advertisement := .Values.bgpAdvertisements }}
+---
+apiVersion: metallb.io/v1beta1
+kind: BGPAdvertisement
+metadata:
+  name: {{ $advertisement.name }}
+  namespace: {{ $advertisement.namespace }}
+  labels:
+    {{- include "metallb-config.labels" $ | nindent 4 }}
+    {{- if $advertisement.labels }}
+    {{- $advertisement.labels | toYaml | nindent 4 }}
+    {{- end }}
+spec:
+  {{- $advertisement.spec | toYaml | nindent 2 -}}
+{{- end }}

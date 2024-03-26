@@ -1,0 +1,15 @@
+{{- range $ippool := .Values.ipAddressPools }}
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: {{ $ippool.name }}
+  namespace: {{ $ippool.namespace | default $.Values.defaultNamespace }}
+  labels:
+    {{- include "metallb-config.labels" $ | nindent 4 }}
+    {{- if $ippool.labels }}
+    {{- $ippool.labels | toYaml | nindent 4 }}
+    {{- end }}
+spec:
+  {{- $ippool.spec | toYaml | nindent 2 -}}
+{{- end }}

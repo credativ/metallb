@@ -1,0 +1,336 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "Values",
+    "required": [
+    ],
+    "properties": {
+        "nameOverride": {
+            "type": "string",
+            "default": "",
+            "title": "The nameOverride Schema"
+        },
+        "fullnameOverride": {
+            "type": "string",
+            "default": "",
+            "title": "The fullnameOverride Schema"
+        },
+        "defaultNamespace": {
+            "type": "string",
+            "default": "",
+            "title": "The defaultNamespace Schema",
+            "examples": [
+                "metallb-system"
+            ]
+        },
+        "ipAddressPools": {
+            "type": "array",
+            "default": [],
+            "title": "The ipAddressPools Schema",
+            "items": {
+                "type": "object",
+                "default": {},
+                "title": "A Schema",
+                "required": [
+                    "name",
+                    "spec"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The name Schema",
+                        "examples": [
+                            "default"
+                        ]
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The namespace Schema",
+                        "examples": [
+                            "metallb-system"
+                        ]
+                    },
+                    "labels": {
+                        "type": "object",
+                        "title": "The labels Schema",
+                        "additionalProperties": { "type": "string" }
+                    },
+                    "spec": {
+                        "type": "object",
+                        "default": {},
+                        "title": "The spec Schema",
+                        "required": [
+                        ]
+                    }
+                }
+            }
+        },
+        "l2Advertisements": {
+            "type": "array",
+            "default": [],
+            "title": "The l2Advertisements Schema",
+            "items": {
+                "type": "object",
+                "default": {},
+                "title": "A Schema",
+                "required": [
+                    "name",
+                    "spec"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The name Schema",
+                        "examples": [
+                            "default"
+                        ]
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The namespace Schema",
+                        "examples": [
+                            "metallb-system"
+                        ]
+                    },
+                    "labels": {
+                        "type": "object",
+                        "title": "The labels Schema",
+                        "additionalProperties": { "type": "string" }
+                    },
+                    "spec": {
+                        "type": "object",
+                        "default": {},
+                        "title": "The spec Schema",
+                        "required": [
+                        ]
+                    }
+                }
+            }
+        },
+        "bgpAdvertisements": {
+            "type": "array",
+            "default": [],
+            "title": "The bgpAdvertisements Schema",
+            "items": {
+                "type": "object",
+                "default": {},
+                "title": "A Schema",
+                "required": [
+                    "name",
+                    "spec"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The name Schema",
+                        "examples": [
+                            "default"
+                        ]
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The namespace Schema",
+                        "examples": [
+                            "metallb-system"
+                        ]
+                    },
+                    "labels": {
+                        "type": "object",
+                        "title": "The labels Schema",
+                        "additionalProperties": { "type": "string" }
+                    },
+                    "spec": {
+                        "type": "object",
+                        "default": {},
+                        "title": "The spec Schema",
+                        "required": [
+                        ]
+                    }
+                }
+            }
+        },
+        "bgpPeers": {
+            "type": "array",
+            "default": [],
+            "title": "The bgpPeers Schema",
+            "items": {
+                "type": "object",
+                "default": {},
+                "title": "A Schema",
+                "required": [
+                    "name",
+                    "spec"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The name Schema",
+                        "examples": [
+                            "default"
+                        ]
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The namespace Schema",
+                        "examples": [
+                            "metallb-system"
+                        ]
+                    },
+                    "labels": {
+                        "type": "object",
+                        "title": "The labels Schema",
+                        "additionalProperties": { "type": "string" }
+                    },
+                    "spec": {
+                        "type": "object",
+                        "default": {},
+                        "title": "The spec Schema",
+                        "required": [
+                        ]
+                    }
+                }
+            }
+        },
+        "bfdProfiles": {
+            "type": "array",
+            "default": [],
+            "title": "The bfdProfiles Schema",
+            "items": {
+                "type": "object",
+                "default": {},
+                "title": "A Schema",
+                "required": [
+                    "name",
+                    "spec"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The name Schema",
+                        "examples": [
+                            "default"
+                        ]
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The namespace Schema",
+                        "examples": [
+                            "metallb-system"
+                        ]
+                    },
+                    "labels": {
+                        "type": "object",
+                        "title": "The labels Schema",
+                        "additionalProperties": { "type": "string" }
+                    },
+                    "spec": {
+                        "type": "object",
+                        "default": {},
+                        "title": "The spec Schema",
+                        "required": [
+                        ]
+                    }
+                }
+            }
+        },
+        "communities": {
+            "type": "array",
+            "default": [],
+            "title": "The communities Schema",
+            "items": {
+                "type": "object",
+                "default": {},
+                "title": "A Schema",
+                "required": [
+                    "name",
+                    "spec"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The name Schema",
+                        "examples": [
+                            "default"
+                        ]
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The namespace Schema",
+                        "examples": [
+                            "metallb-system"
+                        ]
+                    },
+                    "labels": {
+                        "type": "object",
+                        "title": "The labels Schema",
+                        "additionalProperties": { "type": "string" }
+                    },
+                    "spec": {
+                        "type": "object",
+                        "default": {},
+                        "title": "The spec Schema",
+                        "required": [
+                        ]
+                    }
+                }
+            }
+        },
+        "frrConfigurations": {
+            "type": "array",
+            "default": [],
+            "title": "The frrConfigurations Schema",
+            "items": {
+                "type": "object",
+                "default": {},
+                "title": "A Schema",
+                "required": [
+                    "name",
+                    "spec"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The name Schema",
+                        "examples": [
+                            "default"
+                        ]
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The namespace Schema",
+                        "examples": [
+                            "metallb-system"
+                        ]
+                    },
+                    "labels": {
+                        "type": "object",
+                        "title": "The labels Schema",
+                        "additionalProperties": { "type": "string" }
+                    },
+                    "spec": {
+                        "type": "object",
+                        "default": {},
+                        "title": "The spec Schema",
+                        "required": [
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

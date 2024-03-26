@@ -1,0 +1,15 @@
+{{- range $config := .Values.frrConfigurations }}
+---
+apiVersion: frrk8s.metallb.io/v1beta1
+kind: FRRConfiguration
+metadata:
+  name: {{ $config.name }}
+  namespace: {{ $config.namespace | default $.Values.defaultNamespace }}
+  labels:
+    {{- include "metallb-config.labels" $ | nindent 4 }}
+    {{- if $config.labels }}
+    {{- $config.labels | toYaml | nindent 4 }}
+    {{- end }}
+spec:
+  {{- $config.spec | toYaml | nindent 2 }}
+{{- end }}

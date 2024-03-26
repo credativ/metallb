@@ -1,0 +1,15 @@
+{{- range $community := .Values.communities }}
+---
+apiVersion: metallb.io/v1beta1
+kind: Community
+metadata:
+  name: {{ $community.name }}
+  namespace: {{ $community.namespace | default $.Values.defaultNamespace }}
+  labels:
+    {{- include "metallb-config.labels" $ | nindent 4 }}
+    {{- if $community.labels }}
+    {{- $community.labels | toYaml | nindent 4 }}
+    {{- end }}
+spec:
+  {{- $community.spec | toYaml | nindent 2 -}}
+{{- end }}

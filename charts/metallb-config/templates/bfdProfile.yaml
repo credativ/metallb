@@ -1,0 +1,15 @@
+{{- range $profile := .Values.bfdProfiles }}
+---
+apiVersion: metallb.io/v1beta1
+kind: BFDProfile
+metadata:
+  name: {{ $profile.name }}
+  namespace: {{ $profile.namespace | default $.Values.defaultNamespace }}
+  labels:
+    {{- include "metallb-config.labels" $ | nindent 4 }}
+    {{- if $profile.labels }}
+    {{- $profile.labels | toYaml | nindent 4 }}
+    {{- end }}
+spec:
+  {{- $profile.spec | toYaml | nindent 2 -}}
+{{- end }}
